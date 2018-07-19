@@ -1,0 +1,101 @@
+{% load staticfiles %}
+
+<!--Inicio "añadir al carro" -->
+<div class="modal fade" id="carrito" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Añadido al carro!</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>      
+</div>
+
+<!-- Fin "Añadir al carro" -->
+
+<!-- Inicio Formulario Acceder -->
+<div class="modal fade" id="Login">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+               <a href="https://facebook.com" class="btn btn-primary btn-block" role="buttom">
+                    <i class="fa fa-facebook"> Iniciar sesión con Facebook</i>
+                </a>
+                <a href="https://twitter.com" class="btn btn-info btn-block" role="buttom">
+                   <i class="fa fa-twitter"> Iniciar sesión con Twitter</i>
+                </a>
+                <a href="https://plus.google.com/collections/featured" class="btn btn-danger btn-block" role="buttom">
+                   <i class="fa fa-google"> Iniciar sesión con Google</i>
+                </a>
+            </div>
+
+            <div class="modal-body">
+                <p id="formtxt">o también</p>
+
+                <form>
+                    <div class="form-group">
+                        <label for="inputEmail">Email</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Ingresa tu email">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Contraseña</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Ingresa tu contraseña">
+                    </div>
+                    <div class="form-group">
+                        <buttom type="submit" class="btn btn-success btn-block">Iniciar sesión</buttom>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <p><a href="">Has olvidado tu contraseña?</a></p>
+                <p><a href="" data-toggle="modal" data-target="#Signup">Desea Registrarse?</a></p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Fin Formulario Acceder -->
+
+<!-- Inicio Formulario Registrarse -->
+
+<div class="modal fade" id="Signup">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <form>
+                    <div class="form-group">
+                        <label for="inputName">Nombre de Usuario</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="Ingresa un nombre de usuario">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmailSignup">Email</label>
+                        <input type="email" class="form-control" id="inputEmailSignup" placeholder="Ingresa una direccion de correo valido">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPasswordSignup">Contraseña</label>
+                        <input type="password" class="form-control" id="inputPasswordSignup" placeholder="Escribe una contraseña">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPasswordSignupr">Contraseña nuevamente</label>
+                        <input type="password" class="form-control" id="inputPasswordSignupr" placeholder="Escribe de nuevo tu contraseña">
+                    </div>
+                    <buttom type="submit" class="btn btn-success btn-block">Registrate</buttom>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <p>Al registrarme, <a href="">Acepto los Términos de Uso</a> y <a href="">La Política de Privacidad</a></p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Fin Formulario Registrarse -->

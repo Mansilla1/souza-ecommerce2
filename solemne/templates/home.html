@@ -1,0 +1,182 @@
+{% load staticfiles %}
+{% load thumbnail %}
+
+<!DOCTYPE html>
+
+<!-- Comienzo HTML-->
+<html lang="es">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+   <title>{% block title %}El rincón de Souza{% endblock title %}</title>
+   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+   <!-- Estilo.css -->
+   <link href="{% static 'css/estilo.css' %}" rel="stylesheet">
+
+   <!-- Iconos -->
+   <link href="{% static 'css/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+   <link href="{% static 'css/soscial/bootstrap-social.css' %}" rel="stylesheet">
+
+   <!-- Fuentes Web-->
+   <link href="https://fonts.googleapis.com/css?family=Graduate|Pacifico" rel="stylesheet" type="text/css">
+
+
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    
+</head>
+
+<!-- Cuerpo -->
+
+<body id="Sp">
+
+  {% include "includes/header.html" %}
+
+    <!-- Jumbotron Inicio -->
+
+    <section id="title-enroll">
+        
+        <div class="container">
+            <div class="navbar-header navbar-nav navbar-right">
+                <form class="form-group">
+                    <input type="text" class="form-control" placeholder="Buscar..">
+                </form>
+            </div>
+        </div>
+
+        <div class="jumbotron">
+            <div class="container-fluid">
+                <h1>El Rincón del tío Souza</h1>
+                <p>Disfruta los mejores platos al mejor precio</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jumbotron Fin -->
+
+    <!-- Contenedor Section Contenido -->
+    <section class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row carousel-holder">
+                    <div class="col-md-12">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+
+
+                            <div class="carousel-inner">
+                            {% for product in products|slice:"3" %}
+                                {% if forloop.first %}
+                                    <div class="active item">
+                                {% else %}
+                                    <div class="item">
+                                {% endif %}
+                                
+                                <div align="center"> 
+                                <div class="photo">
+                                   {% thumbnail product.image "1200x300" crop="center" as im %}
+                                     <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="img-responsive" alt="{{product.name}}" >
+                                   {% endthumbnail %}                          
+                                </div>
+                                    <h3>{{product.name}}</h3>
+                                </div>
+
+                                </div>
+                            {% endfor %}
+                            </div>
+
+
+
+
+
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="title-enroll">
+                    <div class="jumbotron">
+                        <div class="container-fluid">
+                            <h2>Productos destacados</h2>
+                        </div>
+                    </div>
+                </div>
+            <article class="col-md-12">
+                <div class="row">
+                   {% for product in products|slice:"4" %}
+                   <div class="col-md-3 col-sm-6">
+
+                       <div class="thumbnail">
+                           <div class="photo">
+                               {% thumbnail product.image "350x260" crop="center" as im %}
+                                 <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="img-responsive" alt="{{product.name}}" >
+                               {% endthumbnail %}                          
+                           </div>
+                           <div class="caption-full">
+                               <h4 class="pull-right">${{product.price}}</h4>
+                               <h4><a href="{% url 'product' product.id %}">{{product.name}}</a></h4>
+                               <buttom class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#carrito">Añadir al carro
+                               </buttom>
+                           </div>
+                           <div class="valora">
+                               <p class="pull-right">2 comentarios</p>
+                               <p>
+                                  <span class="glyphicon glyphicon-star"></span>
+                                   <span class="glyphicon glyphicon-star"></span>
+                                   <span class="glyphicon glyphicon-star-empty"></span>
+                                   <span class="glyphicon glyphicon-star-empty"></span>
+                                   <span class="glyphicon glyphicon-star-empty"></span>
+                                   4.0
+                               </p>
+                           </div>
+                       </div>
+                   </div>
+                   {% endfor %}
+            </div>
+            </article>
+        </div>
+
+        <!-- /.container -->
+
+    </section>
+    <!-- Fin Contenedor Section -->
+
+    <!-- Contenedor Footer-->
+   {% include "includes/footer.html" %}
+    <!-- Fin Footer-->
+    {% include "includes/querys.html" %}
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+<!-- Fin Cuerpo-->
+
+</html>
+<!-- Fin HTML-->
